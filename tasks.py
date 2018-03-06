@@ -6,6 +6,7 @@ AGENT_BASED_INTEGRATIONS = [
     "datadog-checks-base",
     "disk",
     "kubelet",
+    "redisdb",
     "vsphere",
 ]
 
