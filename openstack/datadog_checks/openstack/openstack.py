@@ -484,7 +484,7 @@ class OpenStackCheck(AgentCheck):
                          "Please list `network_ids` under your init_config")
 
         for nid in network_ids:
-            self.get_stats_for_single_network(nid)
+            self.get_stats_for_single_network(nid, tags)
 
     def get_all_network_ids(self):
         url = '{0}/{1}/networks'.format(self.get_neutron_endpoint(), DEFAULT_NEUTRON_API_VERSION)
@@ -499,12 +499,12 @@ class OpenStackCheck(AgentCheck):
             self.warning('Unable to get the list of all network ids: {0}'.format(str(e)))
         return network_ids
 
-    def get_stats_for_single_network(self, network_id):
+    def get_stats_for_single_network(self, network_id, tags):
         url = '{0}/{1}/networks/{2}'.format(self.get_neutron_endpoint(), DEFAULT_NEUTRON_API_VERSION, network_id)
         headers = {'X-Auth-Token': self.get_auth_token()}
         net_details = self._make_request_with_auth_fallback(url, headers)
 
-        service_check_tags = ['network:{0}'.format(network_id)]
+        service_check_tags = ['network:{0}'.format(network_id)] + tags
 
         network_name = net_details.get('network', {}).get('name')
         if network_name is not None:
@@ -856,7 +856,7 @@ class OpenStackCheck(AgentCheck):
                 self.get_stats_for_all_projects(projects, custom_tags)
 
             # For now, monitor all networks
-            self.get_network_stats()
+            self.get_network_stats(custom_tags)
 
             if set_external_tags is not None:
                 set_external_tags(self.get_external_host_tags())
