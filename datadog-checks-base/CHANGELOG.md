@@ -1,9 +1,9 @@
 # CHANGELOG - datadog_checks
 
-
 ## 1.1.0 / Unreleased
 
 * [FEATURE] Add a generic prometheus check base class & rework prometheus check using a mixin
+* [FEATURE] Keep track of Service Checks in the Aggregator stub.
 
 ## 1.0.0 / 2017-03-22
 
