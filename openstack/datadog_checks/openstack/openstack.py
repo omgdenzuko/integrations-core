@@ -462,7 +462,7 @@ class OpenStackCheck(AgentCheck):
 
         return self.get_scope_for_instance(instance).service_catalog.neutron_endpoint
 
-    def get_network_stats(self):
+    def get_network_stats(self, tags=[]):
         """
         Collect stats for all reachable networks
         """
