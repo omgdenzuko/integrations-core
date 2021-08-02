@@ -1,4 +1,4 @@
 # integration pip requirements
-requests==2.11.1 \
-    --hash=sha256:545c4855cd9d7c12671444326337013766f4eea6068c3f0307fb2dc2696d580e \
-    --hash=sha256:5acf980358283faba0b897c73959cecf8b841205bb4b2ad3ef545f46eae1a133
+requests==2.26.0 \
+    --hash=sha256:6c1246513ecd5ecd4528a0906f910e8f0f9c6b8ec72030dc9fd154dc1a6efd24 \
+    --hash=sha256:b8aa58f8cf793ffd8782d3d8cb19e66ef36f7aba4353eec859e74678b01b07a7
